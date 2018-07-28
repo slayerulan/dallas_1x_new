@@ -32,7 +32,7 @@ def get_games_from_1x(mirror, session):
             continue
 
         minute = int(int(g.get('SC').get('TS', 0)) / 60)
-        if minute not in range(10, 35):
+        if minute not in range(10, 25):
             continue
 
         score = (
