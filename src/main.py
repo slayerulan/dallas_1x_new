@@ -61,17 +61,18 @@ while True:
                 sended[g[0].teams] = g[0].score
                 print(g[0])
 
+    print(unfiltred_games_from_1x)
+    print(sended.keys())
     for g in unfiltred_games_from_1x:
         if g.teams not in sended.keys():
             continue
         if g.score != sended.get(g.teams) and g.teams not in sended_update:
             out = g.out
-            old_score = [int(s) for s in sended.get(g.teams).split("-")]
-            new_score = [int(s) for s in g.score.split("-")]
-            who_score = 0 if new_score > old_score else 1
-            if who_score == out:
+            old_score = sended.get(g.teams)[out]
+            new_score = g.score[out]
+            if new_score != old_score:
                 print("Забил аут")
-                send_msg("Забил аут:\n " + g)
+                send_msg("Забил аут:\n " + g.teams)
                 sended_update.append(g.teams)
 
     if len(sended) >= maxlen:

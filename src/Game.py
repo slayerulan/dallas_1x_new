@@ -10,11 +10,13 @@ class LiveGame:
         self._minute = minute
 
     def __repr__(self):
-        pass
+        return f"""{' - '.join(self._teams)}
+Время: {self._minute}
+Счёт: {self._score}"""
 
     def __str__(self):
         return f'''*{self._league}*
-{'-'.join(self._teams)}
+{' - '.join(self._teams)}
 Аут: {self._teams[self._out]}
 Время: {self._minute}
 Счёт: {'-'.join(str(s) for s in self._score)}

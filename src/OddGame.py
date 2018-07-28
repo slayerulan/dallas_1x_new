@@ -27,7 +27,12 @@ class OddGame:
             for t in g.split(" vs "):
                 if t.strip():
                     n.append(t.strip())
-        return list(zip(n[::3], n[1::3], n[2::3]))
+        triples = list(zip(n[::3], n[1::3], n[2::3]))
+        #for t in triples:
+        #    if not t[-1].replace('-', '').isdigit():
+        return triples
+
+
 
     def calculate_averages(self, team_number):
         team = self._teams[team_number]
@@ -100,7 +105,7 @@ class OddGame:
             for g in self._tree.xpath(
                 '//tr[@class="h2h-data"]//td//table//tr//td//text()'
             )
-            if "/" not in g
+            if g.count("/") < 2
         ]
         return self.concat_titles(h2h)
 

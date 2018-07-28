@@ -24,6 +24,7 @@ def get_games_from_1x(mirror, session):
         data = session.get(url, timeout=10)
     except Exception as e:
         print(e)
+        raise Exception
 
     json_data = json.loads(data.text)
     games = []
