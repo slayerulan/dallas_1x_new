@@ -37,6 +37,9 @@ while True:
             continue
 
         if g[0].is_target(g[1].out) and g[1].averages_is_target():
+            if not g[1].fav_coef >= 1.7:
+                print('Coef is not match')
+                continue
             if g[0].teams not in sended.keys():
                 print('Suitable game')
                 send_msg(str(g[0]))

@@ -90,6 +90,10 @@ class OddGame:
         self._out = int(not self._fav)
         self._fav_coef = min(win_coef, loose_coef)
 
+    @property
+    def fav_coef(self):
+        return self._fav_coef
+
     def parse_head2head(self):
         h2h = [
             g
