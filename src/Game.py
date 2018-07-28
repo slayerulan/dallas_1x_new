@@ -126,3 +126,7 @@ class LiveGame:
     @property
     def out(self):
         return self._out
+
+    @property
+    def minute(self):
+        return self._minute

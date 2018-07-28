@@ -32,15 +32,15 @@ def get_games_from_1x(mirror, session):
             continue
 
         minute = int(int(g.get('SC').get('TS', 0)) / 60)
-        if minute not in range(10, 25):
-            continue
+#        if minute not in range(10, 25):
+#            continue
 
         score = (
             g.get('SC').get('FS').get('S1', 0),
             g.get('SC').get('FS').get('S2', 0)
         )
-        if score not in TARGET_SCORES:
-            continue
+#         if score not in TARGET_SCORES:
+#             continue
 
         id = g.get('I')
         league = g.get('LE')
