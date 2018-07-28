@@ -18,11 +18,11 @@ class LiveGame:
 Аут: {self._teams[self._out]}
 Время: {self._minute}
 Счёт: {'-'.join(str(s) for s in self._score)}
-Атаки: {'/'.join(str(a) for a in self.attacks)} - {sum(self.attacks)}
+Атаки: {'/'.join(str(a) for a in self.attacks)}
 Владение мячом: {'%/'.join(str(p) for p in self.possessions)}%
-Опасные атаки: {'/'.join(str(d_a) for d_a in self.dan_attacks)} - {sum(self.dan_attacks)}
-Удары в створ: {'/'.join(str(s) for s in self.shots_on)} - {sum(self.shots_on)}
-Угловые: {'/'.join(str(c) for c in self.corners)} - {sum(self.corners)}'''
+Опасные атаки: {'/'.join(str(d_a) for d_a in self.dan_attacks)}
+Удары в створ: {'/'.join(str(s) for s in self.shots_on)}
+Угловые: {'/'.join(str(c) for c in self.corners)}'''
 
     def fill_stats(self, mirror, session):
         url = f"{mirror}/LiveFeed/GetGameZip?id={self._id}"
@@ -116,3 +116,7 @@ class LiveGame:
     @property
     def score(self):
         return self._score
+
+    @property
+    def out(self):
+        return self._out

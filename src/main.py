@@ -36,8 +36,8 @@ while True:
             continue
 
         if g[0].is_target(g[1].out) and g[1].averages_is_target():
-            print('Suitable game')
             if g[0].teams not in sended.keys():
+                print('Suitable game')
                 send_msg(g[0])
                 sended[g[0].teams] = g[0].score
                 print(g[0])
