@@ -18,6 +18,7 @@ while True:
     try: 
         cur_mirror = get_current_mirror(session)
     except Exception as e:
+        print(traceback.format_exc())
         continue
 
     games_from_1x = get_data.get_games_from_1x(cur_mirror, session)
@@ -38,7 +39,8 @@ while True:
         if g[0].is_target(g[1].out) and g[1].averages_is_target():
             if g[0].teams not in sended.keys():
                 print('Suitable game')
-                send_msg(g[0])
+                send_msg(str(g[0]))
+                print('Sended')
                 sended[g[0].teams] = g[0].score
                 print(g[0])
 

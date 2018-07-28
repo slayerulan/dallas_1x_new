@@ -53,7 +53,6 @@ class LiveGame:
                 self.possessions[fav] >= self.possessions[out],
                 self.corners[fav] >= self.corners[out]
                 ])
-        
 
     @property
     def teams(self):
