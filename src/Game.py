@@ -52,7 +52,7 @@ class LiveGame:
                 self.corners[out] <= 1,
                 self.shots_on[out] <= 1,
                 # self._minute >= self.shots_off[out] * 10,
-                self.dang_attacks[fav] > 1.5 * self.dang_attacks[out],
+                self.dan_attacks[fav] > 1.5 * self.dan_attacks[out],
                 self.shots_on[fav] > self.shots_on[out],
                 self.shots_off[fav] >= self.shots_off[out],
                 self.dan_attacks[fav] > self.dan_attacks[out],
