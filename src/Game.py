@@ -8,6 +8,7 @@ class LiveGame:
         self._teams = teams
         self._score = score
         self._minute = minute
+        self._odd_url = ''
 
     def __repr__(self):
         return f"""{' - '.join(self._teams)}
@@ -24,7 +25,8 @@ class LiveGame:
 Владение мячом: {'%/'.join(str(p) for p in self.possessions)}%
 Опасные атаки: {'/'.join(str(d_a) for d_a in self.dan_attacks)}
 Удары в створ: {'/'.join(str(s) for s in self.shots_on)}
-Угловые: {'/'.join(str(c) for c in self.corners)}'''
+Угловые: {'/'.join(str(c) for c in self.corners)}
+[Сcылка]({self._odd_url})'''
 
     def fill_stats(self, mirror, session):
         url = f"{mirror}/LiveFeed/GetGameZip?id={self._id}"
@@ -62,6 +64,10 @@ class LiveGame:
                 self.possessions[fav] >= self.possessions[out],
                 self.corners[fav] >= self.corners[out]
                 ])
+
+    @_odd_url.setter
+    def odd_url(self, odd_url):
+        self._odd_url = odd_url
 
     @property
     def teams(self):

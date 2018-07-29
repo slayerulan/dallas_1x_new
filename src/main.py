@@ -55,10 +55,11 @@ while True:
                 print('Coef is not match')
                 continue
             if g[0].teams not in sended.keys():
+                g[0].odd_url = g[1].url
                 print('Suitable game')
                 send_msg(str(g[0]))
                 print('Sended')
-                sended[g[0].teams] = g[0].score
+                sended[g[0].teams] = (g[0].score, g[0].out)
                 print(g[0])
 
     print(unfiltred_games_from_1x)
@@ -66,9 +67,9 @@ while True:
     for g in unfiltred_games_from_1x:
         if g.teams not in sended.keys():
             continue
-        if g.score != sended.get(g.teams) and g.teams not in sended_update:
-            out = g.out
-            old_score = sended.get(g.teams)[out]
+        if g.score != sended.get(g.teams)[0] and g.teams not in sended_update:
+            out = sended.get(g.teams)[1]
+            old_score = sended.get(g.teams)[0]
             new_score = g.score[out]
             if new_score != old_score:
                 print("Забил аут")

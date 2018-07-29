@@ -77,6 +77,10 @@ class OddGame:
         return self._out
 
     @property
+    def url(self):
+        return self._url
+
+    @property
     def fav(self):
         return self._fav
 
