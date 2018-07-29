@@ -69,11 +69,11 @@ while True:
             continue
         if g.score != sended.get(g.teams)[0] and g.teams not in sended_update:
             out = sended.get(g.teams)[1]
-            old_score = sended.get(g.teams)[0]
+            old_score = sended.get(g.teams)[0][out]
             new_score = g.score[out]
             if new_score != old_score:
                 print("Забил аут")
-                send_msg("Забил аут:\n " + g.teams)
+                send_msg("Забил аут:\n" + g.teams)
                 sended_update.append(g.teams)
 
     if len(sended) >= maxlen:
