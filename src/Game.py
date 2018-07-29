@@ -65,7 +65,11 @@ class LiveGame:
                 self.corners[fav] >= self.corners[out]
                 ])
 
-    @_odd_url.setter
+    @property
+    def odd_url(self):
+        return self._odd_url
+
+    @odd_url.setter
     def odd_url(self, odd_url):
         self._odd_url = odd_url
 
