@@ -62,7 +62,6 @@ while True:
                 sended[g[0].teams] = (g[0].score, g[0].out)
                 print(g[0])
 
-    print(unfiltred_games_from_1x)
     print(sended.keys())
     for g in unfiltred_games_from_1x:
         if g.teams not in sended.keys():
