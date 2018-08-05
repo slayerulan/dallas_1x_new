@@ -48,6 +48,8 @@ class LiveGame:
             print(e)
             raise ConnectionError
         json_info = json.loads(info.text)
+        if not json_info:
+            raise ValueError('There is no stats')
         self._stats = json_info.get('Value', {}).get('SC', {}).get('S', {})
         if not self._stats:
             raise ValueError('There is no stats')
