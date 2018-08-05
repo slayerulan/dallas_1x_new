@@ -27,18 +27,18 @@ class LiveGame:
 Удары в створ: {'/'.join(str(s) for s in self.shots_on)}
 Угловые: {'/'.join(str(c) for c in self.corners)}
 
-Сумма мячей за последние {self._stats[0]} игр.
-Забито: {self._stats[1]} / {self._stats[2]}
-Пропущено: {self._stats[3]} / {self._stats[4]}
+Сумма мячей за последние {self._g_stats[0]} игр.
+Забито: {self._g_stats[1]} / {self._g_stats[2]}
+Пропущено: {self._g_stats[3]} / {self._g_stats[4]}
 [Сcылка]({self._odd_url})'''
 
     @property
     def stats(self):
-        return self._stats
+        return self._g_stats
 
     @stats.setter
     def stats(self, stats):
-        self._stats = stats
+        self._g_stats = stats
 
     def fill_stats(self, mirror, session):
         url = f"{mirror}/LiveFeed/GetGameZip?id={self._id}"
