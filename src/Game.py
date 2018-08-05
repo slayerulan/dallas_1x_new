@@ -26,7 +26,19 @@ class LiveGame:
 Опасные атаки: {'/'.join(str(d_a) for d_a in self.dan_attacks)}
 Удары в створ: {'/'.join(str(s) for s in self.shots_on)}
 Угловые: {'/'.join(str(c) for c in self.corners)}
+
+Сумма мячей за последние {self._stats[0]} игр.
+Забито: {self._stats[1]} / {self._stats[2]}
+Пропущено: {self._stats[3]} / {self._stats[4]}
 [Сcылка]({self._odd_url})'''
+
+    @property
+    def stats(self):
+        return self._stats
+
+    @stats.setter
+    def stats(self, stats):
+        self._stats = stats
 
     def fill_stats(self, mirror, session):
         url = f"{mirror}/LiveFeed/GetGameZip?id={self._id}"

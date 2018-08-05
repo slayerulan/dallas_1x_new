@@ -6,6 +6,7 @@ class OddGame:
     def __init__(self, url, teams):
         self._url = url
         self._teams = teams
+        self._stats = [0, 0]
 
     def __str__(self):
         return f"""
@@ -28,11 +29,7 @@ class OddGame:
                 if t.strip():
                     n.append(t.strip())
         triples = list(zip(n[::3], n[1::3], n[2::3]))
-        #for t in triples:
-        #    if not t[-1].replace('-', '').isdigit():
         return triples
-
-
 
     def calculate_averages(self, team_number):
         team = self._teams[team_number]
@@ -57,7 +54,17 @@ class OddGame:
             sum_goals / len(self._teams_history[team_number]),
             sum_missed_goals / len(self._teams_history[team_number]),
         ]
+        self._stats[team_number] = [sum_goals, sum_missed_goals]
+        self._amount_of_games = len(self._teams_history[team_number])
         return stats
+
+    @property
+    def stats(self):
+        return [
+            self._amount_of_games,
+            self._stats[0][0], self._stats[1][0],
+            self._stats[0][1], self._stats[1][1]
+        ]
 
     def fill_stats(self, session):
         try:
@@ -69,8 +76,8 @@ class OddGame:
         self.identify_fav_and_out()
         history = self.parse_head2head()
         self.fill_teams_history(history)
-        self._fav_averages = self.calculate_averages(self._fav) 
-        self._out_averages = self.calculate_averages(self._out) 
+        self._fav_averages = self.calculate_averages(self._fav)
+        self._out_averages = self.calculate_averages(self._out)
 
     @property
     def out(self):
@@ -87,8 +94,9 @@ class OddGame:
     def parse_coef(self, win_or_loose):
         try:
             return float(
-            self._tree.xpath(f'//td[@class="odds-row-{win_or_loose}"]//text()')[0]
-        )
+                self._tree.xpath(
+                    f'//td[@class="odds-row-{win_or_loose}"]//text()')[0]
+            )
         except IndexError:
             return 0
 
@@ -127,4 +135,3 @@ class OddGame:
         )
         if len(self._teams_history[1]) > 5:
             self._teams_history[1] = self._teams_history[1][:5]
-

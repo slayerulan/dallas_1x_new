@@ -2,13 +2,12 @@ from itertools import product
 
 from fuzzywuzzy import fuzz
 
-
 def find_related_games(games_from_1x, games_from_odd):
     related_games = []
     seen = set()
     for g, g_odd in product(games_from_1x, games_from_odd):
-        if ((g.teams, g_odd.teams) in seen 
-            or (g_odd.teams, g.teams) in seen):
+        if ((g.teams, g_odd.teams) in seen
+                or (g_odd.teams, g.teams) in seen):
             continue
 
         if g.teams == g_odd.teams:
@@ -22,4 +21,4 @@ def find_related_games(games_from_1x, games_from_odd):
         seen.add((g.teams, g_odd.teams))
         seen.add((g_odd.teams, g.teams))
 
-    return  related_games
+    return related_games

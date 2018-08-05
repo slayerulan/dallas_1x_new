@@ -56,6 +56,7 @@ while True:
                 continue
             if g[0].teams not in sended.keys():
                 g[0].odd_url = g[1].url
+                g[0].stats = g[1].stats
                 print('Suitable game')
                 send_msg(str(g[0]))
                 print('Sended')
