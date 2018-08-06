@@ -19,8 +19,10 @@ class OddGame:
         return ' - '.join(self._teams)
 
     def averages_is_target(self):
-        averages = self.calculate_averages(self._out)
-        return averages[0] < averages[1]
+        out_averages = self.calculate_averages(self._out)
+        fav_averages = self.calculate_averages(self._fav)
+        return (out_averages[0] < out_averages[1] and
+                out_fav_averages[0] > out_fav_averages[1])
 
     def concat_titles(self, games):
         n = []
