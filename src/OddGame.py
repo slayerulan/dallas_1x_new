@@ -22,7 +22,7 @@ class OddGame:
         out_averages = self.calculate_averages(self._out)
         fav_averages = self.calculate_averages(self._fav)
         return (out_averages[0] < out_averages[1] and
-                out_fav_averages[0] > out_fav_averages[1])
+                fav_averages[0] > fav_averages[1])
 
     def concat_titles(self, games):
         n = []
