@@ -50,7 +50,10 @@ class LiveGame:
         json_info = json.loads(info.text)
         if not json_info:
             raise ValueError('There is no stats')
-        self._stats = json_info.get('Value', {}).get('SC', {}).get('S', {})
+        try:
+            self._stats = json_info.get('Value', {}).get('SC', {}).get('S', {})
+        except NoneType:
+            raise ValueError('There is no stats')
         if not self._stats:
             raise ValueError('There is no stats')
 
