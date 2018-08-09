@@ -15,6 +15,4 @@ def get_current_mirror(session):
             r = session.get(url, timeout=10)
         except Exception as e:
             raise ValueError("Can't find mirror")
-
-        return r.html.search('⇒ {} ⇒')[0]
-
+        return f"https://{r.html.search('⇒ {} ⇒')[0]}"

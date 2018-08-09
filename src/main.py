@@ -29,7 +29,10 @@ while True:
         print(traceback.format_exc())
         continue
 
-    unfiltred_games_from_1x = get_data.get_games_from_1x(cur_mirror, session)
+    try:
+        unfiltred_games_from_1x = get_data.get_games_from_1x(cur_mirror, session)
+    except Exception:
+        continue
     games_from_1x = [
         game 
         for game in unfiltred_games_from_1x
